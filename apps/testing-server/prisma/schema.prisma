@@ -1,0 +1,17 @@
+datasource db {
+  provider = "mysql"
+  url      = env("DB_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model ScriptResult {
+  createdAt  DateTime  @default(now())
+  executedAt DateTime?
+  id         String    @id @default(cuid())
+  result     String?
+  scriptName String?
+  updatedAt  DateTime  @updatedAt
+}
